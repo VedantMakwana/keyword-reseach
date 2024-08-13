@@ -77,6 +77,20 @@ def generate_blog_from_tweets(tweets):
     )
     return response
 
+def get_image_url(data):
+    count = 0
+    urls = []
+
+    for i in data:
+        if count>2:
+            break
+        else:
+            if len(i)!=0:
+                for j in i:
+                    if re.search(".jpg",j):
+                        urls.append(j)
+                        count += 1
+    return urls
 
 # --- Streamlit App ---
 st.title("Tweet to Blog Post Generator")
@@ -109,7 +123,15 @@ if st.button("Generate Blog Post"):
         query = generate_query(keywords_json)
         similar_tweets = get_similar_tweets(query)
         blog_post = generate_blog_from_tweets(similar_tweets["text"]).result
+        images = get_image_url(similar_tweets["media_url"])
         st.write("## Blog Post")
         st.write(blog_post)
+        col1, col2 = st.columns(2)
+        with col1:
+            if images[0]:
+                st.image(images[0])
+        with col2:
+            if images[1]:
+                st.image(images[1])
     else:
         st.warning("Please find similar tweets first.")
