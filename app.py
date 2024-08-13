@@ -9,7 +9,7 @@ import pandas as pd
 from ast import keyword
 
 # Get API key from user data
-google_api_key = "AIzaSyA8v_ewAJQgysEZcwauMivM7jh8CAYHx-g"
+google_api_key = "AIzaSyD0J1qbVaIEI0Lfah8knilG9aKHvxJ8rzo"
 os.environ["GOOGLE_API_KEY"] = google_api_key
 genai.configure(api_key=google_api_key)
 
