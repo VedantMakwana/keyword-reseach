@@ -7,7 +7,7 @@ import json
 import requests
 import pandas as pd
 from ast import keyword
-
+import re
 # Get API key from user data
 google_api_key = "AIzaSyD0J1qbVaIEI0Lfah8knilG9aKHvxJ8rzo"
 os.environ["GOOGLE_API_KEY"] = google_api_key
